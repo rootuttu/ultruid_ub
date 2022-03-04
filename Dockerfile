@@ -1,4 +1,4 @@
-FROM ghcr.io/mesuk2043/pagladoggy:latest
+FROM ghcr.io/amirulandalib/whatisthis:latest
 
 COPY . .
 
