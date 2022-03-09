@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
     && pip3 install av --no-binary av
 
 # changing workdir
-WORKDIR /root/TeamULLu/
+WORKDIR /root/TeamULLU/
 
 # start the bot
 CMD ["bash", "startup"]
