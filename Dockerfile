@@ -1,16 +1,13 @@
-FROM ghcr.io/amirulandalib/whatisthis:latest
+FROM ghcr.io/jamesdarke/anshu2ul:latest
 
-# set timezone
-ENV TZ=Asia/Kolkata
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# install requirements
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install av --no-binary av
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
-    # cloning the repo and installing requirements.
-    && git clone https://github.com/rootuttu/vik_ub.git /root/Vikraman/ \
-    && cp requirements.txt /root/Vikraman/ \
-    && pip3 install --no-cache-dir -r /root/Vikraman/requirements.txt \
-    && pip3 install av --no-binary av
+# changing workdir
+WORKDIR /root/TeamUltroid/
 
-WORKDIR /root/Vikraman/
-
-# start the bot
+# start the bot1
 CMD ["bash", "startup"]
